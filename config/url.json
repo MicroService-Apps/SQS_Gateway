@@ -1,0 +1,4 @@
+{
+  "FinanceInputQueue": "https://sqs.us-east-1.amazonaws.com/644844257250/FinanceInputQueue",
+  "FinanceResponseQueue": "https://sqs.us-east-1.amazonaws.com/644844257250/FinanceReponseQueue"
+}
