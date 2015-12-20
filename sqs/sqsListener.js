@@ -5,8 +5,6 @@ var queUrl = URL.getUrl('FinanceInputQueue');
 
 // configure AWS
 AWS.config.update({
-    "accessKeyId": "AKIAJW66E6QSMI6DEVEQ",
-    "secretAccessKey": "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",
     "region": "us-east-1"
 });
 
@@ -29,7 +27,7 @@ function receiveMessageCallback(err, data) {
             // handle message
             var message = data['Messages'][0]['Body'];
             serviceRequest.sendHTTP(message);
-            console.log(message);.gitignore
+            console.log(message);
 
             // Delete the message when we've successfully processed it
             var deleteMessageParams = {
