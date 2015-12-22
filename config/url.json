@@ -1,4 +1,10 @@
 {
-  "FinanceInputQueue": "https://sqs.us-east-1.amazonaws.com/644844257250/FinanceInputQueue",
-  "FinanceResponseQueue": "https://sqs.us-east-1.amazonaws.com/644844257250/FinanceReponseQueue"
+  "Finance": {
+    "FinanceInputQueue": "https://sqs.us-east-1.amazonaws.com/644844257250/FinanceInputQueue",
+    "FinanceResponseQueue": "https://sqs.us-east-1.amazonaws.com/644844257250/FinanceResponseQueue"
+  },
+  "K12": {
+    "K12InputQueue": "https://sqs.us-east-1.amazonaws.com/644844257250/K12InputQueue",
+    "K12ResponseQueue": "https://sqs.us-east-1.amazonaws.com/644844257250/K12ResponseQueue"
+  }
 }

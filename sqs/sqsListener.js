@@ -1,7 +1,13 @@
 var AWS = require('aws-sdk');
 var URL = require('../config/url');
 var serviceRequest = require('./serviceRequest');
-var queUrl = URL.getUrl('FinanceInputQueue');
+var service = process.argv[2];
+var queUrl = URL.getInQueUrl(service);
+
+if(queUrl == null) {
+    console.log("Service doesn't exist !");
+    return;
+}
 
 // configure AWS
 AWS.config.update({

@@ -1,3 +1,4 @@
 {
-  "Finance": "/finance/<uni>"
+  "Finance": "/finance/<uni>",
+  "K12": "/K12/<uni>"
 }

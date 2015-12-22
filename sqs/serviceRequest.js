@@ -2,8 +2,9 @@ var request = require('request');
 var iptable = require('../config/iptable');
 var serviceQuery = require('../config/serviceQuery');
 var sqsSender = require('./sqsSender');
-var service = 'Finance';
+var service = process.argv[2];
 
+// send http request to service
 exports.sendHTTP = function(data) {
     // get all parameters
     var message = JSON.parse(data)['Req'];
@@ -30,6 +31,9 @@ exports.sendHTTP = function(data) {
         case 'delete':
             method = 'DELETE';
             break;
+        case 'patch':
+            method = 'PATCH';
+            break;
         default:
             // send to response queue
             var response = "Operation not correct";
@@ -42,13 +46,23 @@ exports.sendHTTP = function(data) {
     var port = iptable.getPort(service);
     url = 'http://'+ip+':'+port+url;
 
+    // encode body to x-message_router-form-urlencoded form
+    var encodedBody = '';
+    for(var key in body) {
+        encodedBody += (key + '=' + body[key] + '&');
+    }
+
+    if(encodedBody.length > 0) {
+        encodedBody = encodedBody.substr(0, encodedBody.length-1);
+    }
+
     // send http request
     request({
         headers: {
             'Content-Type': 'application/x-message_router-form-urlencoded'
         },
         uri: url,
-        body: JSON.stringify(body),
+        body: encodedBody,
         method: method
     }, function (err, response, body) {
         // send to response queue

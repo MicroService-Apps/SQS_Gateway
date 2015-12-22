@@ -1,8 +1,8 @@
 var AWS = require('aws-sdk');
 var URL = require('../config/url');
 
-var resName = 'FinanceResponseQueue';
-var queUrl = URL.getUrl(resName);
+var service = process.argv[2];
+var queUrl = URL.getResQueUrl(service);
 
 AWS.config.update({
     "region": "us-east-1"
